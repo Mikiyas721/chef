@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../../models/buttonModel.dart';
+import '../widgets/myButton.dart';
 
 class OpeningPage extends StatelessWidget {
   @override
@@ -28,36 +30,26 @@ class OpeningPage extends StatelessWidget {
                   textAlign: TextAlign.center,
                 ),
               ),
-              PhysicalModel(
-                color: Color(0x66dff3e6),
-                borderRadius: BorderRadius.all(Radius.circular(10)),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: FlatButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/signUpPage');
-                    },
-                    padding: EdgeInsets.only(
-                        top: 13, bottom: 13, right: 40, left: 40),
-                    color: Theme.of(context).buttonColor,
-                    textColor: Colors.white,
-                    child: Text('Sign up'),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(10))),
-                  ),
-                ),
-              ),
-              FlatButton(
+              MyButton(
+                model: ButtonModel(label: 'Sign up', isLoading: false),
                 onPressed: () {
-                  Navigator.pushNamed(context, '/loginPage');
+                  Navigator.pushNamed(context, '/signUpPage');
                 },
-                padding:
-                    EdgeInsets.only(top: 13, bottom: 13, right: 45, left: 45),
-                color: Color(0xffe3f4ea),
-                textColor: Theme.of(context).buttonColor,
-                child: Text('Log in'),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(10))),
+                minWidth: 150,
+              ),SizedBox(height: 5),
+              ButtonTheme(
+                minWidth: 150,
+                child: FlatButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/loginPage');
+                  },
+                  padding: EdgeInsets.only(top: 15, bottom: 15),
+                  color: Color(0xffe3f4ea),
+                  textColor: Theme.of(context).buttonColor,
+                  child: Text('Log in'),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(10))),
+                ),
               ),
               SizedBox(
                 height: 100,
