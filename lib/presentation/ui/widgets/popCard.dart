@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
 
-class PopCard extends StatelessWidget{
+class PopCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Positioned(
       left: 20,
       top: 80,
-      child: PhysicalModel(
-        color: Colors.black12.withOpacity(0.02),borderRadius: BorderRadius.all(Radius.circular(10)),
+      child: Container(
+        decoration: BoxDecoration(boxShadow: [
+          BoxShadow(
+              color: Colors.black12.withOpacity(0.01),
+              spreadRadius: 8,
+              offset: Offset(0.2, 0.5),
+              blurRadius: 5)
+        ]),
         child: Card(
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(10))),
@@ -20,5 +26,4 @@ class PopCard extends StatelessWidget{
       ),
     );
   }
-
 }

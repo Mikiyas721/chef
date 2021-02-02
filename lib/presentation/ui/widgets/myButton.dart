@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
-import '../../models/buttonModel.dart';
+import '../../../common/common.dart';
 
 class MyButton extends StatelessWidget {
-  final ButtonModel model;
+  final bool isLoading;
+  final String text;
   final void Function() onPressed;
   final double minWidth;
-  const MyButton({Key key, @required this.model, @required this.onPressed, this.minWidth = double.infinity})
-      : super(key: key);
+
+  const MyButton({
+    Key key,
+    this.isLoading = false,
+    this.text,
+    @required this.onPressed,
+    this.minWidth = double.infinity,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,16 +21,17 @@ class MyButton extends StatelessWidget {
       color: Color(0x66dff3e6),
       borderRadius: BorderRadius.all(Radius.circular(10)),
       child: Padding(
-        padding: const EdgeInsets.all(10),
+        padding: 10.allPadding,
         child: ButtonTheme(
           minWidth: minWidth,
           child: FlatButton(
-            padding: EdgeInsets.only(top:15,bottom: 15),
+            padding: 15.vPadding,
             onPressed: onPressed,
-            color: Theme.of(context).buttonColor,
+            color: context.buttonColor,
             textColor: Colors.white,
-            child:
-                model.isLoading ? CircularProgressIndicator() : Text(model.label),
+            child: isLoading
+                ? CircularProgressIndicator()
+                : Text(text),
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(Radius.circular(10))),
           ),
